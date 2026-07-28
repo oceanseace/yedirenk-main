@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Powerline Adaptör - GponLink</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="https://raw.githubusercontent.com/oceandi/links/refs/heads/main/ISP/images/homepage/logo.png">
+    <link rel="stylesheet" href="product-styles.css">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="footer.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <script src="navbar.js"></script>
+    
+    <!-- Hero Section -->
+    <section class="product-hero">
+        <div class="hero-content">
+            <h1 class="product-title">Powerline Adaptör</h1>
+            <p class="product-subtitle">Elektrik kabloları üzerinden internet.<br>Her prize bir ethernet portu.</p>
+            <div class="hero-pricing">
+                <span class="price">₺2.999</span>
+                <span class="price-info">'den başlayan fiyatlarla</span>
+            </div>
+            <div class="hero-actions">
+                <a href="#buy" class="btn-primary">Satın Al</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="static/index/powerline-kit.png" alt="Powerline Kit">
+        </div>
+    </section>
+    <!-- How It Works Section -->
+    <section class="design-section">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 60px;">Nasıl Çalışır?</h2>
+            <div class="how-it-works">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Modem Yanına Takın</h3>
+                    <p>İlk adaptörü modeminizin yanındaki prize takın ve ethernet kablosuyla bağlayın</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>İkinci Adaptörü Takın</h3>
+                    <p>İkinci adaptörü internet istediğiniz odadaki prize takın</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Eşleştirme Butonu</h3>
+                    <p>Her iki adaptördeki eşleştirme butonuna basın, 2 dakika içinde bağlantı kurulur</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Kullanmaya Başlayın</h3>
+                    <p>Ethernet kablosu veya dahili WiFi ile cihazlarınızı bağlayın</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Buy Section -->
+    <section id="buy" class="buy-section">
+        <div class="container">
+            <h2 class="section-title">Size Uygun Kit</h2>
+            <div class="models-grid">
+                <div class="model-card">
+                    <h3>TL-WPA4226 KIT</h3>
+                    <p class="model-price">₺2.999</p>
+                    <ul class="model-features">
+                        <li>AV600 Powerline</li>
+                        <li>300 Mbps WiFi</li>
+                        <li>WiFi Clone özelliği</li>
+                        <li>Dahili priz</li>
+                    </ul>
+                    <details class="tech-specs-mini">
+                        <summary>Teknik Detaylar</summary>
+                        <div class="tech-details">
+                            <p><strong>Standart:</strong> HomePlug AV</p>
+                            <p><strong>Hız:</strong> 600 Mbps powerline</p>
+                            <p><strong>WiFi:</strong> 300 Mbps (2.4 GHz)</p>
+                            <p><strong>Portlar:</strong> 2x 10/100 Mbps</p>
+                            <p><strong>Menzil:</strong> 300 metre</p>
+                            <p><strong>Şifreleme:</strong> 128-bit AES</p>
+                            <p><strong>İçerik:</strong> 1x WiFi + 1x Ethernet adaptör</p>
+                        </div>
+                    </details>
+                    <button class="btn-buy" onclick="openBuyModal('TL-WPA4226 KIT', 2999)">Satın Al</button>
+                </div>
+                
+                <div class="model-card featured">
+                    <div class="badge">Tavsiye Edilen</div>
+                    <h3>TL-WPA7617 KIT</h3>
+                    <p class="model-price">₺3.499</p>
+                    <ul class="model-features">
+                        <li>AV1000 Powerline</li>
+                        <li>AC1200 Dual-Band WiFi</li>
+                        <li>Gigabit Ethernet</li>
+                        <li>EasyMesh desteği</li>
+                    </ul>
+                    <details class="tech-specs-mini">
+                        <summary>Teknik Detaylar</summary>
+                        <div class="tech-details">
+                            <p><strong>Standart:</strong> HomePlug AV2</p>
+                            <p><strong>Hız:</strong> 1000 Mbps powerline</p>
+                            <p><strong>WiFi:</strong> 867 (5GHz) + 300 (2.4GHz) Mbps</p>
+                            <p><strong>Port:</strong> 1x Gigabit Ethernet</p>
+                            <p><strong>Özellik:</strong> Dahili priz, OneMesh</p>
+                            <p><strong>Güç:</strong> Max 11W</p>
+                            <p><strong>İçerik:</strong> TL-WPA7617 + TL-PA7017P</p>
+                        </div>
+                    </details>
+                    <button class="btn-buy" onclick="openBuyModal('TL-WPA7617 KIT', 3499)">Satın Al</button>
+                </div>
+                
+                <div class="model-card">
+                    <h3>TL-WPA8631P KIT</h3>
+                    <p class="model-price">₺4.999</p>
+                    <ul class="model-features">
+                        <li>AV1300 Powerline</li>
+                        <li>AC1200 WiFi + 2x2 MIMO</li>
+                        <li>3x Gigabit port</li>
+                        <li>OneMesh teknolojisi</li>
+                    </ul>
+                    <details class="tech-specs-mini">
+                        <summary>Teknik Detaylar</summary>
+                        <div class="tech-details">
+                            <p><strong>Standart:</strong> HomePlug AV2</p>
+                            <p><strong>Hız:</strong> 1300 Mbps powerline</p>
+                            <p><strong>WiFi:</strong> 867 + 300 Mbps Dual-Band</p>
+                            <p><strong>Portlar:</strong> 3x Gigabit + Dahili priz</p>
+                            <p><strong>Özellik:</strong> WiFi Auto-Sync, EasyMesh</p>
+                            <p><strong>Güvenlik:</strong> WPA3 + 128-bit AES</p>
+                            <p><strong>İçerik:</strong> TL-WPA8631P + TL-PA8010P</p>
+                        </div>
+                    </details>
+                    <button class="btn-buy" onclick="openBuyModal('TL-WPA8631P KIT', 4999)">Satın Al</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="footer.js"></script>
+    <script src="product-scripts.js"></script>
+</body>
+</html>

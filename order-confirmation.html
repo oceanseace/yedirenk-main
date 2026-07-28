@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sipariş Onayı - GponLink</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="https://raw.githubusercontent.com/oceandi/links/refs/heads/main/ISP/images/homepage/logo.png">
+    <link rel="stylesheet" href="product-styles.css">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="footer.css">
+    <style>
+        .confirmation-hero {
+            padding: 100px 0;
+            text-align: center;
+            background-color: #f5f5f7;
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background-color: #34c759;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin: 0 auto 30px;
+        }
+        
+        .order-number {
+            font-size: 21px;
+            color: #86868b;
+            margin-top: 16px;
+        }
+        
+        .email-notification {
+            background: #f0f9ff;
+            border-radius: 18px;
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 800px;
+            text-align: center;
+        }
+        
+        .email-notification h3 {
+            font-size: 24px;
+            color: #0071e3;
+            margin-bottom: 16px;
+        }
+        
+        .email-notification p {
+            color: #0c5460;
+            margin-bottom: 0;
+        }
+        
+        .order-details {
+            max-width: 800px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 18px;
+            padding: 40px;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .detail-section {
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #f5f5f7;
+        }
+        
+        .detail-section:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .detail-section h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            font-size: 17px;
+        }
+        
+        .detail-label {
+            color: #86868b;
+        }
+        
+        .detail-value {
+            font-weight: 500;
+            text-align: right;
+        }
+        
+        .product-info-display {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f5f5f7;
+        }
+        
+        .product-image-display {
+            width: 100px;
+            height: 100px;
+            background: #f5f5f7;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .product-image-display img {
+            max-width: 80px;
+            max-height: 80px;
+            object-fit: contain;
+        }
+        
+        .product-details-display {
+            flex: 1;
+        }
+        
+        .next-steps {
+            background-color: #fbfbfd;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .step-card {
+            padding: 30px;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background-color: #0071e3;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0 auto 20px;
+        }
+        
+        .actions-section {
+            text-align: center;
+            padding: 60px 0;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        @media (max-width: 768px) {
+            .order-details {
+                padding: 20px;
+                margin: 20px;
+            }
+            
+            .detail-row {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .detail-value {
+                text-align: left;
+            }
+            
+            .product-info-display {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script src="navbar.js"></script>
+    
+    <!-- Confirmation Hero -->
+    <section class="confirmation-hero">
+        <div class="container">
+            <div class="success-icon">✓</div>
+            <h1 class="product-title">Siparişiniz Alındı!</h1>
+            <p class="product-subtitle">Siparişinizi aldık ve işleme koyduk.</p>
+            <p class="order-number">Sipariş Numarası: <strong id="orderNumber">GP-2025-XXXXX</strong></p>
+        </div>
+    </section>
+    
+    <!-- Email Notification Section -->
+    <section class="email-notification">
+        <h3>📧 E-posta Gönderildi</h3>
+        <p>Sipariş detaylarınız e-posta adresinize gönderildi. Tahmini teslimat süresi: <strong>1-2 iş günü</strong></p>
+    </section>
+    
+    <!-- Order Details -->
+    <section class="order-details-section">
+        <div class="container">
+            <div class="order-details">
+                <!-- Product Information -->
+                <div class="detail-section">
+                    <h3>Ürün Bilgileri</h3>
+                    <div class="product-info-display">
+                        <div class="product-image-display">
+                            <img id="productImage" src="" alt="Ürün">
+                        </div>
+                        <div class="product-details-display">
+                            <div class="detail-row">
+                                <span class="detail-label">Ürün</span>
+                                <span class="detail-value" id="productInfo">-</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Adet</span>
+                                <span class="detail-value">1</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Birim Fiyat</span>
+                                <span class="detail-value" id="productPrice">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Delivery Information -->
+                <div class="detail-section">
+                    <h3>Teslimat Bilgileri</h3>
+                    <div class="detail-row">
+                        <span class="detail-label">Ad Soyad</span>
+                        <span class="detail-value" id="customerName">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Telefon</span>
+                        <span class="detail-value" id="customerPhone">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">E-posta</span>
+                        <span class="detail-value" id="customerEmail">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Adres</span>
+                        <span class="detail-value" id="customerAddress">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Tahmini Teslimat</span>
+                        <span class="detail-value" id="deliveryDate">1-2 iş günü içinde</span>
+                    </div>
+                </div>
+                
+                <!-- Payment Information -->
+                <div class="detail-section">
+                    <h3>Ödeme Bilgileri</h3>
+                    <div class="detail-row">
+                        <span class="detail-label">Ödeme Yöntemi</span>
+                        <span class="detail-value">Kapıda Ödeme</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Ürün Tutarı</span>
+                        <span class="detail-value" id="subtotal">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Kargo</span>
+                        <span class="detail-value">Ücretsiz</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Kurulum</span>
+                        <span class="detail-value">Ücretsiz</span>
+                    </div>
+                    <div class="detail-row" style="font-size: 21px; font-weight: 600; padding-top: 20px;">
+                        <span class="detail-label">Toplam</span>
+                        <span class="detail-value" id="totalAmount">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Next Steps -->
+    <section class="next-steps">
+        <div class="container">
+            <h2 class="section-title">Sonraki Adımlar</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>E-posta Onayı</h3>
+                    <p>Sipariş detaylarınız e-posta adresinize gönderildi.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Hazırlık</h3>
+                    <p>Ürününüz depomuzdan hazırlanacak.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Teslimat ve Kurulum</h3>
+                    <p>Uzman ekibimiz ürününüzü teslim edip ücretsiz kurulumunu yapacak.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Actions -->
+    <section class="actions-section">
+        <div class="container">
+            <div class="action-buttons">
+                <a href="index.html" class="btn-primary">Ana Sayfaya Dön</a>
+                <a href="#" onclick="window.print()" class="btn-secondary">Yazdır</a>
+            </div>
+        </div>
+    </section>
+    
+    <script src="footer.js"></script>
+    
+    <script>
+        // Get order details from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const orderData = {
+            orderNumber: urlParams.get('order') || `GP-${new Date().getFullYear()}-${Math.floor(Math.random() * 100000).toString().padStart(5, '0')}`,
+            product: urlParams.get('product') || 'Ürün bilgisi yok',
+            price: urlParams.get('price') || '0',
+            name: urlParams.get('name') || '-',
+            phone: urlParams.get('phone') || '-',
+            email: urlParams.get('email') || '-',
+            address: urlParams.get('address') || '-',
+            city: urlParams.get('city') || '-',
+            district: urlParams.get('district') || '-'
+        };
+        
+        // Update page with order details
+        document.getElementById('orderNumber').textContent = orderData.orderNumber;
+        document.getElementById('productInfo').textContent = orderData.product;
+        document.getElementById('productPrice').textContent = `₺${parseInt(orderData.price).toLocaleString('tr-TR')}`;
+        document.getElementById('customerName').textContent = orderData.name;
+        document.getElementById('customerPhone').textContent = orderData.phone;
+        document.getElementById('customerEmail').textContent = orderData.email;
+        document.getElementById('customerAddress').textContent = `${orderData.address}, ${orderData.district}/${orderData.city}`;
+        document.getElementById('subtotal').textContent = `₺${parseInt(orderData.price).toLocaleString('tr-TR')}`;
+        document.getElementById('totalAmount').textContent = `₺${parseInt(orderData.price).toLocaleString('tr-TR')}`;
+        
+        // Calculate delivery date (1-2 business days)
+        const today = new Date();
+        const deliveryDate = new Date(today);
+        deliveryDate.setDate(deliveryDate.getDate() + 2);
+        
+        // Skip weekends
+        if (deliveryDate.getDay() === 0) { // Sunday
+            deliveryDate.setDate(deliveryDate.getDate() + 1);
+        } else if (deliveryDate.getDay() === 6) { // Saturday
+            deliveryDate.setDate(deliveryDate.getDate() + 2);
+        }
+        
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('deliveryDate').textContent = deliveryDate.toLocaleDateString('tr-TR', options);
+        
+        // Set product image based on product name - Doğru yollar
+        const productImages = {
+            // Router models
+            'Archer AX12': 'static/index/ROUTER/Archer-AX12/Archer-AX12.png',
+            'Archer AX72 Pro': 'static/index/ROUTER/Archer-AX72-Pro/Archer-AX72-Pro.png',
+            'Archer BE230': 'static/index/ROUTER/Archer-BE230/Archer-BE230.png',
+            // Access Point models
+            'TL-WA801N': 'static/index/AP/TL-WA801N/TL-WA801N.png',
+            'TL-WA1201': 'static/index/AP/TL-WA1201/TL-WA1201.png',
+            'TL-WA3001': 'static/index/AP/TL-WA3001/TL-WA3001.png',
+            // Powerline models
+            'TL-WPA4226 KIT': 'static/index/POWERLINE/TL-WPA4226-KIT/TL-WPA4226-KIT.png',
+            'TL-WPA7617 KIT': 'static/index/POWERLINE/TL-WPA7617-KIT/TL-WPA7617-KIT.png',
+            'TL-WPA8631P KIT': 'static/index/POWERLINE/TL-WPA8631P-KIT/TL-WPA8631P-KIT.png',
+            // Mesh models
+            'Deco M4 2li Paket': 'static/index/MESH/Deco-M4/Deco-M4.png',
+            'Deco PX50 2li Paket': 'static/index/MESH/Deco-PX50/Deco-PX50.png',
+            'Deco X60 2li Paket': 'static/index/MESH/Deco-X60/Deco-X60.png',
+        };
+        
+        // Set the product image
+        const productImage = document.getElementById('productImage');
+        if (productImages[orderData.product]) {
+            productImage.src = productImages[orderData.product];
+            productImage.alt = orderData.product;
+        } else {
+            // Default image if product not found
+            productImage.src = 'https://via.placeholder.com/80/f5f5f7/86868b?text=Ürün';
+            productImage.alt = 'Ürün';
+        }
+    </script>
+</body>
+</html>

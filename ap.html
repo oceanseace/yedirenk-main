@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Access Point - GponLink</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="https://raw.githubusercontent.com/oceandi/links/refs/heads/main/ISP/images/homepage/logo.png">
+    <link rel="stylesheet" href="product-styles.css">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="footer.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <script src="navbar.js"></script>
+    
+    <!-- Hero Section -->
+    <section class="product-hero" style="background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);">
+        <div class="hero-content">
+            <h1 class="product-title" style="color: white;">Access Point</h1>
+            <p class="product-subtitle" style="color: #f5f5f7;">Profesyonel kablosuz ağ çözümleri.<br>Kurumsal kalitede bağlantı.</p>
+            <div class="hero-pricing">
+                <span class="price" style="color: white;">₺999</span>
+                <span class="price-info" style="color: #f5f5f7;">'dan başlayan fiyatlarla</span>
+            </div>
+            <div class="hero-actions">
+                <a href="#buy" class="btn-primary">Satın Al</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="static/index/ap.png" alt="Access Point">
+        </div>
+    </section>
+    <!-- Design Section -->
+    <section class="design-section">
+        <div class="container">
+            <div class="design-content">
+                <div class="design-text">
+                    <h2>Profesyonel Kurulum</h2>
+                    <p>Tavan veya duvara monte edilebilen tasarımıyla ofisler, oteller, hastaneler ve eğitim kurumları için ideal çözüm.</p>
+                    <ul class="design-features">
+                        <li>Beyaz minimalist tasarım</li>
+                        <li>Tavan montaj kiti dahil</li>
+                        <li>Kensington kilit yuvası</li>
+                        <li>IP54 toz ve nem koruması</li>
+                    </ul>
+                </div>
+                <div class="design-image">
+                    <img src="static/index/ap.webp" alt="AP Design">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Buy Section -->
+
+    <!-- Buy Section - ap.html için düzeltilmiş kısım -->
+    <section id="buy" class="buy-section">
+        <div class="container">
+            <h2 class="section-title">İhtiyacınıza Uygun Model</h2>
+            <div class="models-grid">
+                <div class="model-card">
+                    <h3>TL-WA801N</h3>
+                    <p class="model-price">₺999</p>
+                    <ul class="model-features">
+                        <li>300 Mbps Wireless N</li>
+                        <li>2x sabit anten</li>
+                        <li>Multi-SSID desteği</li>
+                        <li>30m Pasif PoE</li>
+                    </ul>
+                    <details class="tech-specs-mini">
+                        <summary>Teknik Detaylar</summary>
+                        <div class="tech-details">
+                            <p><strong>Standart:</strong> 802.11n/g/b</p>
+                            <p><strong>Hız:</strong> 300 Mbps (2.4 GHz)</p>
+                            <p><strong>Port:</strong> 1x 10/100 Mbps (PoE)</p>
+                            <p><strong>Antenler:</strong> 2x Sabit Omni</p>
+                            <p><strong>Güç:</strong> 9VDC / 0.6A</p>
+                            <p><strong>Güvenlik:</strong> WPA/WPA2-PSK</p>
+                            <p><strong>Boyut:</strong> 181.6 x 129.5 x 36.2 mm</p>
+                        </div>
+                    </details>
+                    <button class="btn-buy" onclick="openBuyModal('TL-WA801N', 999)">Satın Al</button>
+                </div>
+                
+                <div class="model-card featured">
+                    <div class="badge">En Popüler</div>
+                    <h3>TL-WA1201</h3>
+                    <p class="model-price">₺1.999</p>
+                    <ul class="model-features">
+                        <li>AC1200 Dual-Band</li>
+                        <li>867 + 300 Mbps</li>
+                        <li>MU-MIMO teknolojisi</li>
+                        <li>Gigabit port + PoE</li>
+                    </ul>
+                    <details class="tech-specs-mini">
+                        <summary>Teknik Detaylar</summary>
+                        <div class="tech-details">
+                            <p><strong>Standart:</strong> 802.11ac/n/a/b/g</p>
+                            <p><strong>Hız:</strong> 867 Mbps (5GHz) + 300 Mbps (2.4GHz)</p>
+                            <p><strong>Port:</strong> 1x Gigabit (Pasif PoE)</p>
+                            <p><strong>Antenler:</strong> 4x Sabit Yüksek Performans</p>
+                            <p><strong>Özellik:</strong> Captive Portal, MU-MIMO</p>
+                            <p><strong>Güç:</strong> 12V/1.5A</p>
+                            <p><strong>Boyut:</strong> 225 x 145.5 x 37 mm</p>
+                        </div>
+                    </details>
+                    <button class="btn-buy" onclick="openBuyModal('TL-WA1201', 1.999)">Satın Al</button>
+                </div>
+                
+                <div class="model-card">
+                    <h3>TL-WA3001</h3>
+                    <p class="model-price">₺3.999</p>
+                    <ul class="model-features">
+                        <li>AX3000 WiFi 6</li>
+                        <li>2402 + 574 Mbps</li>
+                        <li>Beamforming teknolojisi</li>
+                        <li>Captive Portal</li>
+                    </ul>
+                    <details class="tech-specs-mini">
+                        <summary>Teknik Detaylar</summary>
+                        <div class="tech-details">
+                            <p><strong>Standart:</strong> 802.11ax/ac/n/a/b/g</p>
+                            <p><strong>Hız:</strong> 2402 Mbps (5GHz) + 574 Mbps (2.4GHz)</p>
+                            <p><strong>Port:</strong> 1x Gigabit (Pasif PoE)</p>
+                            <p><strong>Antenler:</strong> 4x Sabit Yüksek Performans</p>
+                            <p><strong>Güvenlik:</strong> WPA3, WPA2-Enterprise</p>
+                            <p><strong>Güç:</strong> 48V/0.5A</p>
+                            <p><strong>Boyut:</strong> 240 x 165 x 43.6 mm</p>
+                        </div>
+                    </details>
+                    <button class="btn-buy" onclick="openBuyModal('TL-WA3001', 3999)">Satın Al</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="footer.js"></script>
+    <script src="product-scripts.js"></script>
+</body>
+</html>

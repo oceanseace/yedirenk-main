@@ -1,0 +1,783 @@
+@font-face {
+    font-family: 'SF-Pro';
+    src: url('/fonts/SF-Pro.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    font-family: "SF-Pro","Helvetica Neue","Helvetica","Arial",sans-serif;
+}
+
+.desktop {
+    inline-size: 100%;
+    block-size: min-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #232526;
+    overflow: hidden;
+    padding: 0;
+    align-content: center;
+    flex-wrap: nowrap;
+    gap: 0;
+    position: absolute;
+    border-radius: 0px;
+}
+
+.image1{
+    background: linear-gradient(to bottom, #0D1443 0%, #394F9C 40%, #A6B6E8 80%, #FFFFFF 100%);
+}
+.image2{
+    background-color: #fafafa;
+}
+.image3{
+    background-image: linear-gradient(#4285F4, #fff);
+}
+.image4{
+    background-image: conic-gradient(#34A853, #202020);
+}
+.image5{
+    background-color: #FBBC05;
+}
+.image6{
+    background-image: linear-gradient(#EA4335, #ffc7c7);
+}
+
+/* ===== LOVEFROM HERO SECTION STYLES ===== */
+.hero-section {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(-45deg, 
+        #4285F4, /* mavi */
+        #34A853, /* yeşil */
+        #FBBC05, /* sarı */
+        #EA4335, /* kırmızı */
+        #9C27B0, /* mor */
+        #FF5722  /* turuncu */
+    );
+    background-size: 600% 600%; /* renk sayısına göre boyutu büyütmek iyi olur */
+    animation: googleGradient 20s ease infinite; /* süreyi biraz artırdım */
+    position: relative;
+    overflow: hidden;
+    border-bottom: 6px solid #fff;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    color: #f5f5f7;
+}
+
+@keyframes googleGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    25% {
+        background-position: 50% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    75% {
+        background-position: 50% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.model {
+    position: relative;
+}
+
+/* LoveFrom Typography */
+.hero-title {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: white;
+    margin: 0 0 0.5rem 0;
+    text-align: center;
+    opacity: 0;
+    animation: gentleFadeIn 2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+    cursor: default;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-title:hover {
+    transform: translateY(-2px);
+    letter-spacing: 0.01em;
+}
+
+.hero-subtitle {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0 0 2rem 0;
+    text-align: center;
+    opacity: 0;
+    animation: gentleFadeIn 2s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+}
+
+/* Elegant Modem Container */
+.elegant-modem-container {
+    margin: 1rem 0 2rem 0;
+    opacity: 0;
+    animation: gentleFadeIn 2s cubic-bezier(0.16, 1, 0.3, 1) 0.9s forwards;
+}
+
+.elegant-modem {
+    position: relative;
+    width: 120px;
+    height: 70px;
+    cursor: pointer;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.elegant-modem:hover {
+    transform: translateY(-3px);
+}
+
+/* Refined modem body */
+.modem-body {
+    width: 120px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 
+        0 4px 20px rgba(0,0,0,0.1),
+        0 1px 3px rgba(0,0,0,0.05),
+        inset 0 1px 0 rgba(255,255,255,1);
+    backdrop-filter: blur(10px);
+    animation: gentleFloat 4s ease-in-out infinite;
+}
+
+/* Logo integration */
+.modem-logo {
+    width: 28px;
+    height: 28px;
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.elegant-modem:hover .modem-logo {
+    transform: translateY(-50%) scale(1.1);
+    opacity: 1;
+}
+
+/* Status indicator */
+.status-indicator {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 8px;
+    height: 8px;
+    background: #00ff88;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(0, 255, 136, 0.6);
+    animation: statusPulse 3s ease-in-out infinite;
+}
+
+/* Elegant antenna */
+.antenna {
+    width: 2px;
+    height: 12px;
+    background: rgba(0,0,0,0.4);
+    position: absolute;
+    top: -12px;
+    right: 25px;
+    border-radius: 1px;
+    animation: subtleWiggle 6s ease-in-out infinite;
+}
+
+.antenna::after {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background: #ff4444;
+    border-radius: 50%;
+    position: absolute;
+    top: -2px;
+    left: -1px;
+    animation: signalGlow 2s ease-in-out infinite;
+}
+
+/* WiFi waves */
+.wifi-waves {
+    position: absolute;
+    top: -15px;
+    left: 60px;
+    opacity: 0.6;
+}
+
+.wave {
+    width: 12px;
+    height: 12px;
+    border: 1px solid rgba(255,255,255,0.8);
+    border-radius: 50%;
+    position: absolute;
+    opacity: 0;
+    animation: waveRipple 4s ease-out infinite;
+}
+
+.wave:nth-child(2) {
+    animation-delay: 1s;
+}
+
+.wave:nth-child(3) {
+    animation-delay: 2s;
+}
+
+/* Connection line */
+.connection-line {
+    position: absolute;
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(180deg, transparent, rgba(255,255,255,0.3), transparent);
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.elegant-modem:hover .connection-line {
+    opacity: 1;
+}
+
+/* Hero buttons */
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    opacity: 0;
+    animation: gentleFadeIn 2s cubic-bezier(0.16, 1, 0.3, 1) 1.2s forwards;
+}
+
+.hero-btn {
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 400;
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.hero-btn.primary {
+    background: rgba(255,255,255,0.9);
+    color: #0D1443;
+    border: none;
+}
+
+.hero-btn.secondary {
+    background: rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.9);
+    backdrop-filter: blur(10px);
+}
+
+.hero-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.hero-btn.primary:hover {
+    background: white;
+    box-shadow: 0 4px 20px rgba(255,255,255,0.2);
+}
+
+.hero-btn.secondary:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.4);
+}
+
+/* Scroll hint */
+.scroll-hint {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    opacity: 0.5;
+    animation: scrollPulse 3s ease-in-out infinite;
+}
+
+/* Title and modem interaction */
+.hero-title:hover ~ .elegant-modem-container .elegant-modem {
+    transform: translateY(-5px) scale(1.05);
+}
+
+/* Hero animations */
+@keyframes gentleFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes gentleFloat {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-2px);
+    }
+}
+
+@keyframes statusPulse {
+    0%, 70% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    85% {
+        opacity: 0.4;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes subtleWiggle {
+    0%, 100% {
+        transform: rotate(-1deg);
+    }
+    50% {
+        transform: rotate(1deg);
+    }
+}
+
+@keyframes signalGlow {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1.2);
+    }
+}
+
+@keyframes waveRipple {
+    0% {
+        transform: scale(0.5);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+@keyframes scrollPulse {
+    0%, 100% {
+        opacity: 0.5;
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translateX(-50%) translateY(-3px);
+    }
+}
+/* ===== END HERO SECTION STYLES ===== */
+
+.long1 {
+    box-sizing: border-box;
+    flex-shrink: 0;
+    inline-size: 100%;
+    block-size: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 75px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    position: relative;
+    align-content: flex-start;
+    border-radius: 0px 0px 0px 0px;
+    border-color: #fff;
+    border-style: solid;
+    border-block-start-width: 0px;
+    border-block-end-width: 6px;
+    border-inline-end-width: 0px;
+    border-inline-start-width: 0px;
+    color: #f5f5f7;
+}
+
+.long2 {
+    flex-shrink: 0;
+    inline-size: 100%;
+    block-size: 450px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    padding: 0px;
+    align-content: center;
+    flex-wrap: nowrap;
+    gap: 0;
+    border-radius: 0px;
+}
+
+.highway3 {
+    font-size: 32px;
+    line-height: 1.125;
+    font-weight: 500;
+    color: #1d1d1f;
+    margin: 36px 0px 0px 0px;
+    text-align: center;
+}
+
+#white {
+    color: white;
+}
+
+#black {
+    color: black;
+}
+
+.subhead {
+    font-size: 19px;
+    line-height: 1.21053;
+    font-weight: 400;
+    text-align: center;
+    margin: 10px 0px 17px 0px;
+}
+
+.short {
+    box-sizing: border-box;
+    flex-shrink: 0;
+    inline-size: 50%;
+    block-size: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding:10px 10px 0px 10px;
+    overflow: hidden;
+    position: relative;
+    align-content: center;
+    border-radius: 0;
+    border-color: #fefefe;
+    background-position: center center;
+    background-size: cover;
+    border-style: solid;
+}
+
+#short-left {
+    border-block-start-width: 6px;
+    border-block-end-width: 6px;
+    border-inline-start-width: 12px;
+    border-inline-end-width: 6px;
+}
+
+#short-right {
+    border-block-start-width: 6px;
+    border-block-end-width: 6px;
+    border-inline-start-width: 6px;
+    border-inline-end-width: 12px;
+}
+
+.allbutton {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: flex-start;
+    block-size: fit-content;
+    inline-size: fit-content;
+    margin: 20px;
+}
+
+.wbutton1 {
+    line-height: normal;
+    border-style: solid;
+    border-radius: 20px;
+    margin: 25px 5px;
+    padding: 9px 19px;
+    font-size: 12px;
+    background-color: #f5f5f7;
+    border-width: 0px;
+    color: #000;
+}
+
+.wbutton2 {
+    line-height: normal;
+    border-style: solid;
+    border-radius: 20px;
+    margin: 25px 8px;
+    padding: 8px 16px;
+    font-size: 12px;
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 1px;
+    border-color: #fff;
+    color: #fff;
+}
+
+.bbutton1 {
+    line-height: normal;
+    border-style: solid;
+    border-radius: 20px;
+    margin: 0px 5px;
+    padding: 9px 19px;
+    font-size: 12px;
+    background-color: #0071e3;
+    border-width: 0px;
+    color: #fff;
+}
+
+.bbutton2 {
+    line-height: normal;
+    border-style: solid;
+    border-radius: 20px;
+    margin: 0px 8px;
+    padding: 8px 16px;
+    font-size: 12px;
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 1px;
+    border-color: #0071e3;
+    color: #0071e3;
+}
+
+.bbutton1:hover {
+    background-color: #0077ed;
+    color: #fff;
+}
+
+.bbutton2:hover {
+    background-color: #0071e3;
+    color: #fff;
+}
+
+a:link {
+    text-decoration: none;
+}
+  
+a:visited {
+    text-decoration: none;
+}
+  
+a:hover {
+    text-decoration:none;
+    background-color: #fff;
+    color: #000;
+}
+  
+a:active {
+    text-decoration: none;
+    color: #000;
+}
+
+.noact:hover {
+    background: none;
+}
+
+.superbox {
+    margin-block-start: 20px;
+    background-size: cover;
+    block-size: 62%;
+}
+
+.tv {
+    block-size: 70px;
+    inline-size: auto;
+    margin-block-start: 20px;
+}
+
+.tvdevice {
+    block-size: 62%;
+    inline-size: auto;
+}
+
+.gb2 {
+    block-size: 50%;
+    inline-size: auto;
+    margin-block-start: 65px;
+}
+
+.vdsl {
+    block-size: 50%;
+    inline-size: auto;
+    margin-block-start: 50px;
+}
+
+.earth {
+    block-size: 100%;
+    margin-block-start: 20px;
+}
+
+/* Mac 1200px and 1919px */
+@media screen and (max-width: 1919px) {}
+
+/* iPad ve iPhone 768px (e.g., veya daha azı) */
+@media screen and (max-width: 767px) {
+    .long1 {
+        block-size: 500px;
+        padding: 55px;
+    }
+    
+    .long2 {
+        flex-direction: column;
+        block-size: auto;
+    }
+
+    .short {
+        inline-size: 100%;
+        block-size: 500px;
+        border-inline-start-width: 0;
+        border-inline-end-width: 0;
+    }
+
+    #short-left {
+        border-block-start-width: 6px;
+        border-block-end-width: 6px;
+        border-inline-start-width: 0px;
+        border-inline-end-width: 0px;
+    }
+    
+    #short-right {
+        border-block-start-width: 6px;
+        border-block-end-width: 6px;
+        border-inline-start-width: 0px;
+        border-inline-end-width: 0px;
+    }
+
+    .endofpage {
+        font-size: 10px;
+    }
+
+    /* Hero responsive */
+    .hero-title {
+        font-size: clamp(2.5rem, 12vw, 4rem);
+    }
+    
+    .elegant-modem {
+        width: 100px;
+        height: 60px;
+    }
+    
+    .modem-body {
+        width: 100px;
+        height: 40px;
+    }
+    
+    .modem-logo {
+        width: 24px;
+        height: 24px;
+        left: 15px;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+}
+
+.loading-spinner {
+    position: fixed;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    background: #fafafa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.spinner {
+    inline-size: 40px;
+    block-size: 40px;
+    border: 3px solid #000;
+    border-radius: 50%;
+    border-block-start: 3px solid #fff;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.preload .desktop {
+    opacity: 0;
+}
+
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hero-content {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: white;
+    z-index: 10;
+}
+
+.primary-btn {
+    background-color: white;
+    color: #1d1d1f;
+}
+
+.primary-btn:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.secondary-btn {
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(20px);
+    color: white;
+    border: none;
+}
+
+.secondary-btn:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.approve {
+  height: 100%;
+  border-radius: 20px;
+}
+
+.approve-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  height: 80%;
+  width: 70%;
+}

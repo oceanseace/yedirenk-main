@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Router - GponLink</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="https://raw.githubusercontent.com/oceandi/links/refs/heads/main/ISP/images/homepage/logo.png">
+    <link rel="stylesheet" href="product-styles.css">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="footer.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <script src="navbar.js"></script>
+    
+    <!-- Hero Section -->
+    <section class="product-hero">
+        <div class="hero-content">
+            <h1 class="product-title">Router</h1>
+            <p class="product-subtitle">Yeni nesil WiFi 6 teknolojisi.<br>Ultra hızlı. Ultra güvenilir.</p>
+            <div class="hero-pricing">
+                <span class="price">₺1.999</span>
+                <span class="price-info">'den başlayan fiyatlarla</span>
+            </div>
+            <div class="hero-actions">
+                <a href="#buy" class="btn-primary">Satın Al</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="static/index/archer-router.png" alt="TP-Link Router">
+        </div>
+    </section>
+    <!-- Design Section -->
+    <section class="design-section">
+        <div class="container">
+            <div class="design-content">
+                <div class="design-text">
+                    <h2>Minimalist Tasarım</h2>
+                    <p>Modern ve şık tasarımıyla evinizin her köşesine uyum sağlar. Kompakt yapısı sayesinde minimum yer kaplar.</p>
+                    <ul class="design-features">
+                        <li>Mat siyah kaplama</li>
+                        <li>LED gösterge sistemi</li>
+                        <li>Dikey veya yatay kullanım</li>
+                        <li>Duvar montaj desteği</li>
+                    </ul>
+                </div>
+                <div class="design-image">
+                    <img src="static/index/router-design.png" alt="Router Design">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Buy Section -->
+    <section id="buy" class="buy-section">
+        <div class="container">
+            <h2 class="section-title">Hangi Router size uygun?</h2>
+            <div class="models-grid">
+                <div class="model-card">
+                    <h3>Archer AX12</h3>
+                    <p class="model-price">₺1.999</p>
+                    <ul class="model-features">
+                        <li>AX1500 WiFi 6</li>
+                        <li>1.5 Gbps toplam hız</li>
+                        <li>4x sabit anten</li>
+                        <li>EasyMesh uyumlu</li>
+                    </ul>
+                    <details class="tech-specs-mini">
+                        <summary>Teknik Detaylar</summary>
+                        <div class="tech-details">
+                            <p><strong>WiFi 6:</strong> 1201 (5GHz) + 300 (2.4GHz) Mbps</p>
+                            <p><strong>Portlar:</strong> 1x WAN + 3x LAN Gigabit</p>
+                            <p><strong>Antenler:</strong> 4x Sabit Yüksek Performans</p>
+                            <p><strong>Özellik:</strong> OFDMA, Beamforming, TWT</p>
+                            <p><strong>VPN:</strong> OpenVPN, PPTP</p>
+                            <p><strong>Güç:</strong> 12V/1A</p>
+                            <p><strong>Boyut:</strong> 215 x 117 x 32 mm</p>
+                        </div>
+                    </details>
+                    <button class="btn-buy" onclick="openBuyModal('Archer AX12', 1999)">Satın Al</button>
+                </div>
+                
+                <div class="model-card featured">
+                    <div class="badge">Önerilen</div>
+                    <h3>Archer AX72 Pro</h3>
+                    <p class="model-price">₺3.999</p>
+                    <ul class="model-features">
+                        <li>AX5400 WiFi 6</li>
+                        <li>5.4 Gbps toplam hız</li>
+                        <li>2.5G WAN + USB 3.0</li>
+                        <li>HomeShield güvenlik</li>
+                    </ul>
+                    <details class="tech-specs-mini">
+                        <summary>Teknik Detaylar</summary>
+                        <div class="tech-details">
+                            <p><strong>WiFi 6:</strong> 4804 (5GHz) + 574 (2.4GHz) Mbps</p>
+                            <p><strong>İşlemci:</strong> 1 GHz Dual-Core</p>
+                            <p><strong>Portlar:</strong> 1x 2.5G WAN + 1x 1G WAN/LAN + 3x 1G LAN</p>
+                            <p><strong>Antenler:</strong> 6x Sabit + 4T4R</p>
+                            <p><strong>USB:</strong> 1x USB 3.0 (NAS, Time Machine)</p>
+                            <p><strong>Güvenlik:</strong> WPA3, HomeShield</p>
+                            <p><strong>Boyut:</strong> 272.5 x 147.2 x 49.2 mm</p>
+                        </div>
+                    </details>
+                    <button class="btn-buy" onclick="openBuyModal('Archer AX72 Pro', 3999)">Satın Al</button>
+                </div>
+                
+                <div class="model-card">
+                    <h3>Archer BE230</h3>
+                    <p class="model-price">₺3.499</p>
+                    <ul class="model-features">
+                        <li>BE3600 WiFi 7</li>
+                        <li>3.6 Gbps toplam hız</li>
+                        <li>2x 2.5G port</li>
+                        <li>MLO teknolojisi</li>
+                    </ul>
+                    <details class="tech-specs-mini">
+                        <summary>Teknik Detaylar</summary>
+                        <div class="tech-details">
+                            <p><strong>WiFi 7:</strong> 2882 (5GHz) + 688 (2.4GHz) Mbps</p>
+                            <p><strong>Portlar:</strong> 1x 2.5G WAN + 1x 2.5G LAN + 3x 1G LAN</p>
+                            <p><strong>Antenler:</strong> 4x Harici</p>
+                            <p><strong>Özellik:</strong> MLO, 4K-QAM, Multi-RUs</p>
+                            <p><strong>VPN:</strong> OpenVPN, PPTP, L2TP, WireGuard</p>
+                            <p><strong>USB:</strong> 1x USB 3.0</p>
+                            <p><strong>IoT:</strong> Alexa, Google Assistant uyumlu</p>
+                        </div>
+                    </details>
+                    <button class="btn-buy" onclick="openBuyModal('Archer BE230', 3499)">Satın Al</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="footer.js"></script>
+    <script src="product-scripts.js"></script>
+</body>
+</html>

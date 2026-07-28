@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mesh WiFi Sistemi - GponLink</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="https://raw.githubusercontent.com/oceandi/links/refs/heads/main/ISP/images/homepage/logo.png">
+    <link rel="stylesheet" href="product-styles.css">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="footer.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <script src="navbar.js"></script>
+    
+    <!-- Hero Section -->
+    <section class="product-hero" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+        <div class="hero-content">
+            <h1 class="product-title" style="color: white;">Mesh WiFi</h1>
+            <p class="product-subtitle" style="color: #f5f5f7;">Tüm eviniz tek bir ağ.<br>Kesintisiz WiFi deneyimi.</p>
+            <div class="hero-pricing">
+                <span class="price" style="color: white;">₺2.999</span>
+                <span class="price-info" style="color: #f5f5f7;">'den başlayan fiyatlarla</span>
+            </div>
+            <div class="hero-actions">
+                <a href="#buy" class="btn-primary" style="background-color: white; color: #764ba2;">Satın Al</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="static/index/deco-mesh.png" alt="Mesh WiFi Sistemi">
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" hidden="true">
+        <div class="container">
+            <h2 class="section-title">Akıllı WiFi Sistemi</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🏡</div>
+                    <h3>Tüm Evi Kapsar</h3>
+                    <p>600 m²'ye kadar kesintisiz WiFi kapsama alanı</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Seamless Roaming</h3>
+                    <p>Odadan odaya geçerken otomatik ve kesintisiz bağlantı</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>AI Optimizasyon</h3>
+                    <p>Yapay zeka destekli otomatik kanal ve bant optimizasyonu</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Mobil Yönetim</h3>
+                    <p>iOS ve Android uygulaması ile kolay kurulum ve yönetim</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Buy Section -->
+    <section id="buy" class="buy-section">
+        <div class="container">
+            <h2 class="section-title">Evinize Uygun Paket</h2>
+            <div class="models-grid">
+                <div class="model-card">
+                    <h3>Deco M4 (2'li)</h3>
+                    <p class="model-price">₺2.999</p>
+                    <ul class="model-features">
+                        <li>AC1200 WiFi 5</li>
+                        <li>180 m²'ye kadar</li>
+                        <li>100 cihaza kadar</li>
+                        <li>2x Gigabit port</li>
+                    </ul>
+                    <details class="tech-specs-mini">
+                        <summary>Teknik Detaylar</summary>
+                        <div class="tech-details">
+                            <p><strong>Standart:</strong> 802.11ac/n/a/b/g</p>
+                            <p><strong>Hız:</strong> 867 (5GHz) + 300 (2.4GHz) Mbps</p>
+                            <p><strong>Mesh:</strong> TP-Link Mesh teknolojisi</p>
+                            <p><strong>Portlar:</strong> 2x Gigabit (her ünite)</p>
+                            <p><strong>Özellik:</strong> Beamforming, MU-MIMO</p>
+                            <p><strong>İçerik:</strong> 2x Deco M4, adaptörler</p>
+                            <p><strong>Boyut:</strong> 90.7 x 90.7 x 190 mm</p>
+                        </div>
+                    </details>
+                    <button class="btn-buy" onclick="openBuyModal('Deco M4 2li Paket', 2999)">Satın Al</button>
+                </div>
+                
+                <div class="model-card featured">
+                    <div class="badge">Çok Satan</div>
+                    <h3>Deco PX50 (2'li)</h3>
+                    <p class="model-price">₺5.999</p>
+                    <ul class="model-features">
+                        <li>AX3000 WiFi 6 + Powerline</li>
+                        <li>280 m²'ye kadar</li>
+                        <li>150 cihaza kadar</li>
+                        <li>G.hn 1.5 Gbps</li>
+                    </ul>
+                    <details class="tech-specs-mini">
+                        <summary>Teknik Detaylar</summary>
+                        <div class="tech-details">
+                            <p><strong>WiFi 6:</strong> 2402 (5GHz) + 574 (2.4GHz) Mbps</p>
+                            <p><strong>Powerline:</strong> G.hn 1500 Mbps</p>
+                            <p><strong>Mesh:</strong> AI-Powered + Powerline hibrit</p>
+                            <p><strong>Portlar:</strong> 3x Gigabit (her ünite)</p>
+                            <p><strong>Özellik:</strong> OFDMA, MU-MIMO, HomeShield</p>
+                            <p><strong>İçerik:</strong> 2x Deco PX50, kablolar</p>
+                            <p><strong>Boyut:</strong> 105 x 105 x 169 mm</p>
+                        </div>
+                    </details>
+                    <button class="btn-buy" onclick="openBuyModal('Deco PX50 2li Paket', 5999)">Satın Al</button>
+                </div>
+                
+                <div class="model-card">
+                    <h3>Deco X60 (2'li)</h3>
+                    <p class="model-price">₺7.999</p>
+                    <ul class="model-features">
+                        <li>AX5400 WiFi 6</li>
+                        <li>370 m²'ye kadar</li>
+                        <li>200 cihaza kadar</li>
+                        <li>6 stream teknolojisi</li>
+                    </ul>
+                    <details class="tech-specs-mini">
+                        <summary>Teknik Detaylar</summary>
+                        <div class="tech-details">
+                            <p><strong>WiFi 6:</strong> 4804 (5GHz) + 574 (2.4GHz) Mbps</p>
+                            <p><strong>Mesh:</strong> Seamless roaming</p>
+                            <p><strong>Portlar:</strong> 2x Gigabit (her ünite)</p>
+                            <p><strong>Antenler:</strong> 4x dahili yüksek kazançlı</p>
+                            <p><strong>Güvenlik:</strong> WPA3, HomeShield</p>
+                            <p><strong>İçerik:</strong> 2x Deco X60, adaptörler</p>
+                            <p><strong>Boyut:</strong> 110 x 110 x 114 mm</p>
+                        </div>
+                    </details>
+                    <button class="btn-buy" onclick="openBuyModal('Deco X60 2li Paket', 7999)">Satın Al</button>
+                </div>
+            </div>
+            
+            <div class="expansion-note">
+                <p><strong>Not:</strong> 3'lü paketler ve ek üniteler için bizimle iletişime geçin.</p>
+            </div>
+        </div>
+    </section>
+    <script src="footer.js"></script>
+    <script src="product-scripts.js"></script>
+</body>
+</html>

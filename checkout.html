@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sipariş - GponLink</title>
+    <link rel="icon" href="https://raw.githubusercontent.com/oceandi/links/refs/heads/main/ISP/images/homepage/logo.png">
+    
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("xGha2WYgs8rSDcVGF");
+        })();
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+            background: #fff;
+            color: #1d1d1f;
+            line-height: 1.47;
+        }
+        
+        /* Loading States */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        
+        .loading-overlay.active {
+            display: flex;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(0, 113, 227, 0.1);
+            border-top-color: #0071e3;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Header */
+        .checkout-header {
+            background: #fbfbfd;
+            border-bottom: 1px solid #d2d2d7;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: saturate(180%) blur(20px);
+            background: rgba(251, 251, 253, 0.8);
+        }
+        
+        .header-content {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1d1d1f;
+            text-decoration: none;
+        }
+        
+        .secure-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #0071e3;
+            font-size: 14px;
+        }
+        
+        /* Progress Steps */
+        .progress-container {
+            max-width: 600px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        }
+        
+        .progress-steps::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #d2d2d7;
+            z-index: -1;
+        }
+        
+        .progress-line {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            height: 2px;
+            background: #0071e3;
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+        
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #fff;
+            padding: 0 10px;
+            cursor: pointer;
+        }
+        
+        .step-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid #d2d2d7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .step.active .step-circle {
+            border-color: #0071e3;
+            color: #0071e3;
+        }
+        
+        .step.completed .step-circle {
+            background: #0071e3;
+            border-color: #0071e3;
+            color: #fff;
+        }
+        
+        .step-label {
+            margin-top: 8px;
+            font-size: 14px;
+            color: #86868b;
+            transition: color 0.3s ease;
+        }
+        
+        .step.active .step-label,
+        .step.completed .step-label {
+            color: #1d1d1f;
+        }
+        
+        /* Main Content */
+        .checkout-container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 60px;
+        }
+        
+        /* Form Section */
+        .checkout-form {
+            background: #fff;
+        }
+        
+        .form-section {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        .form-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .section-title {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 32px;
+            letter-spacing: -0.003em;
+        }
+        
+        .input-group {
+            margin-bottom: 24px;
+        }
+        
+        .input-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #1d1d1f;
+        }
+        
+        .input-field {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid #d2d2d7;
+            border-radius: 12px;
+            font-size: 17px;
+            transition: all 0.2s ease;
+            background: #fbfbfd;
+        }
+        
+        .input-field:hover {
+            background: #f5f5f7;
+        }
+        
+        .input-field:focus {
+            outline: none;
+            border-color: #0071e3;
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
+        }
+        
+        .input-error {
+            border-color: #ff3b30;
+        }
+        
+        .error-message {
+            color: #ff3b30;
+            font-size: 14px;
+            margin-top: 6px;
+            display: none;
+        }
+        
+        .input-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        
+        /* Order Summary */
+        .order-summary {
+            position: sticky;
+            top: 100px;
+            background: #fbfbfd;
+            border-radius: 18px;
+            padding: 32px;
+            height: fit-content;
+        }
+        
+        .summary-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        
+        .product-preview {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 32px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid #d2d2d7;
+        }
+        
+        .product-image {
+            width: 80px;
+            height: 80px;
+            background: #fff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .product-details h4 {
+            font-size: 17px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        
+        .product-details p {
+            font-size: 14px;
+            color: #86868b;
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            font-size: 17px;
+        }
+        
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0 0;
+            border-top: 1px solid #d2d2d7;
+            font-size: 24px;
+            font-weight: 600;
+            margin-top: 12px;
+        }
+        
+        /* Submit Button */
+        .button-group {
+            display: flex;
+            gap: 16px;
+            margin-top: 40px;
+        }
+        
+        .submit-button {
+            flex: 1;
+            padding: 18px 32px;
+            background: #0071e3;
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .submit-button:hover {
+            background: #0077ed;
+            transform: scale(1.01);
+        }
+        
+        .submit-button:active {
+            transform: scale(0.99);
+        }
+        
+        .submit-button:disabled {
+            background: #d2d2d7;
+            cursor: not-allowed;
+            transform: scale(1);
+        }
+        
+        .submit-button.secondary {
+            background: #86868b;
+        }
+        
+        .submit-button.secondary:hover {
+            background: #696969;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .checkout-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .order-summary {
+                position: relative;
+                top: 0;
+            }
+            
+            .input-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+    </div>
+    
+    <!-- Header -->
+    <header class="checkout-header">
+        <div class="header-content">
+            <a href="/" class="logo">GponLink</a>
+            <div class="secure-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0110 0v4"></path>
+                </svg>
+                Güvenli Sipariş
+            </div>
+        </div>
+    </header>
+    
+    <!-- Progress Steps -->
+    <div class="progress-container">
+        <div class="progress-steps">
+            <div class="progress-line" id="progressLine" style="width: 0%;"></div>
+            <div class="step active" data-step="1" onclick="goToStep(1)">
+                <div class="step-circle">1</div>
+                <div class="step-label">Bilgiler</div>
+            </div>
+            <div class="step" data-step="2" onclick="goToStep(2)">
+                <div class="step-circle">2</div>
+                <div class="step-label">Teslimat</div>
+            </div>
+            <div class="step" data-step="3" onclick="goToStep(3)">
+                <div class="step-circle">3</div>
+                <div class="step-label">Onay</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="checkout-container" id="checkoutContainer">
+        <div class="checkout-form">
+            <!-- Step 1: Personal Info -->
+            <div class="form-section active" id="step1">
+                <h2 class="section-title">Kişisel Bilgiler</h2>
+                
+                <div class="input-row">
+                    <div class="input-group">
+                        <label class="input-label">Ad</label>
+                        <input type="text" class="input-field" id="firstName" placeholder="">
+                        <div class="error-message">Ad alanı zorunludur</div>
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">Soyad</label>
+                        <input type="text" class="input-field" id="lastName" placeholder="">
+                        <div class="error-message">Soyad alanı zorunludur</div>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label class="input-label">E-posta</label>
+                    <input type="email" class="input-field" id="email" placeholder="">
+                    <div class="error-message">Geçerli bir e-posta adresi giriniz</div>
+                </div>
+                
+                <div class="input-group">
+                    <label class="input-label">Telefon</label>
+                    <input type="tel" class="input-field" id="phone" placeholder="">
+                    <div class="error-message">Geçerli bir telefon numarası giriniz</div>
+                </div>
+            </div>
+            
+            <!-- Step 2: Delivery -->
+            <div class="form-section" id="step2">
+                <h2 class="section-title">Teslimat Bilgileri</h2>
+                
+                <div class="input-group">
+                    <label class="input-label">Adres</label>
+                    <textarea class="input-field" id="address" rows="3" placeholder="Mahalle, Sokak, No"></textarea>
+                    <div class="error-message">Adres alanı zorunludur</div>
+                </div>
+                
+                <div class="input-row">
+                    <div class="input-group">
+                        <label class="input-label">İl</label>
+                        <select class="input-field" id="city">
+                            <option value="">Seçiniz</option>
+                            <option value="Bursa">Bursa</option>
+                        </select>
+                        <div class="error-message">İl seçimi zorunludur</div>
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">İlçe</label>
+                        <select class="input-field" id="district">
+                            <option value="">Önce il seçiniz</option>
+                        </select>
+                        <div class="error-message">İlçe seçimi zorunludur</div>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label class="input-label">Posta Kodu (Opsiyonel)</label>
+                    <input type="text" class="input-field" id="zipCode" placeholder="16000" maxlength="5">
+                </div>
+            </div>
+            
+            <!-- Step 3: Review -->
+            <div class="form-section" id="step3">
+                <h2 class="section-title">Sipariş Özeti</h2>
+                
+                <div style="background: #f5f5f7; padding: 24px; border-radius: 12px; margin-bottom: 24px;">
+                    <h3 style="font-size: 20px; margin-bottom: 16px;">Teslimat Bilgileri</h3>
+                    <p id="reviewName" style="font-weight: 600; margin-bottom: 8px;">-</p>
+                    <p id="reviewPhone" style="margin-bottom: 8px;">-</p>
+                    <p id="reviewEmail" style="margin-bottom: 8px;">-</p>
+                    <p id="reviewAddress" style="color: #86868b;">-</p>
+                </div>
+                
+                <div style="background: #f0f9ff; padding: 20px; border-radius: 12px; margin-bottom: 24px;">
+                    <p style="font-size: 16px; color: #0071e3;">
+                        <strong>📦 Tahmini Teslimat:</strong> 1-2 iş günü içinde
+                    </p>
+                    <p style="font-size: 14px; color: #515154; margin-top: 8px;">
+                        Siparişiniz onaylandıktan sonra e-posta adresinize bilgilendirme yapılacaktır.
+                    </p>
+                </div>
+                
+                <div class="terms-checkbox" style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 24px;">
+                    <input type="checkbox" id="terms" style="width: 20px; height: 20px; margin-top: 2px;">
+                    <label for="terms" style="font-size: 14px; line-height: 1.5; color: #515154;">
+                        <a href="#" style="color: #0071e3;">Satış sözleşmesi</a> ve 
+                        <a href="#" style="color: #0071e3;">gizlilik politikasını</a> okudum, kabul ediyorum.
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Navigation Buttons -->
+            <div class="button-group">
+                <button class="submit-button secondary" id="prevButton" style="display: none;" onclick="previousStep()">
+                    Geri
+                </button>
+                <button class="submit-button" id="nextButton" onclick="nextStep()">
+                    Devam Et
+                </button>
+            </div>
+        </div>
+        
+        <!-- Order Summary Sidebar -->
+        <div class="order-summary">
+            <h3 class="summary-title">Sipariş Özeti</h3>
+            
+            <div class="product-preview">
+                <div class="product-image">
+                    <img id="productImage" src="https://via.placeholder.com/80" alt="Product">
+                </div>
+                <div class="product-details">
+                    <h4 id="productTitle">-</h4>
+                    <p id="productModel">-</p>
+                </div>
+            </div>
+            
+            <div class="summary-item">
+                <span>Ürün Tutarı</span>
+                <span id="productPrice">₺0</span>
+            </div>
+            <div class="summary-item">
+                <span>Kargo</span>
+                <span>Ücretsiz</span>
+            </div>
+            <div class="summary-item">
+                <span>Kurulum</span>
+                <span>Ücretsiz</span>
+            </div>
+            <div class="summary-total">
+                <span>Toplam</span>
+                <span id="totalPrice">₺0</span>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // State Management
+        let currentStep = 1;
+        const totalSteps = 3;
+        let orderData = {};
+        
+        // Districts data
+        const districts = {
+            'Bursa': ["Osmangazi", "Yıldırım", "Nilüfer", "Gürsu", "Kestel", "Mudanya", "Gemlik", "İnegöl", "İznik", "Karacabey"]
+        };
+        
+        // Get product data from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        orderData.product = urlParams.get('product') || 'Ürün';
+        orderData.price = parseFloat(urlParams.get('price')) || 0;
+        orderData.category = urlParams.get('category') || '';
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Update product display
+            document.getElementById('productTitle').textContent = orderData.category;
+            document.getElementById('productModel').textContent = orderData.product;
+            document.getElementById('productPrice').textContent = `₺${orderData.price.toLocaleString('tr-TR')}`;
+            document.getElementById('totalPrice').textContent = `₺${orderData.price.toLocaleString('tr-TR')}`;
+            
+            // Product image mapping
+            const productImages = {
+                // Router models
+                'Archer AX12': 'static/index/ROUTER/Archer-AX12/Archer-AX12.png',
+                'Archer AX72 Pro': 'static/index/ROUTER/Archer-AX72-Pro/Archer-AX72-Pro.png',
+                'Archer BE230': 'static/index/ROUTER/Archer-BE230/Archer-BE230.png',
+                // Access Point models
+                'TL-WA801N': 'static/index/AP/TL-WA801N/TL-WA801N.png',
+                'TL-WA1201': 'static/index/AP/TL-WA1201/TL-WA1201.png',
+                'TL-WA3001': 'static/index/AP/TL-WA3001/TL-WA3001.png',
+                // Powerline models
+                'TL-WPA4226 KIT': 'static/index/POWERLINE/TL-WPA4226-KIT/TL-WPA4226-KIT.png',
+                'TL-WPA7617 KIT': 'static/index/POWERLINE/TL-WPA7617-KIT/TL-WPA7617-KIT.png',
+                'TL-WPA8631P KIT': 'static/index/POWERLINE/TL-WPA8631P-KIT/TL-WPA8631P-KIT.png',
+                // Mesh models
+                'Deco M4 2li Paket': 'static/index/MESH/Deco-M4/Deco-M4.png',
+                'Deco PX50 2li Paket': 'static/index/MESH/Deco-PX50/Deco-PX50.png',
+                'Deco X60 2li Paket': 'static/index/MESH/Deco-X60/Deco-X60.png',
+            };
+            
+            // Category-based fallback images
+            const categoryImages = {
+                'Router': 'static/index/router.png',
+                'Access Point': 'static/index/ap.png',
+                'Powerline Adaptör': 'static/index/powerline.png',
+                'Mesh WiFi': 'static/index/mesh.png'
+            };
+            
+            // Set product image
+            const productImageElement = document.getElementById('productImage');
+            if (productImages[orderData.product]) {
+                productImageElement.src = productImages[orderData.product];
+                productImageElement.alt = orderData.product;
+            } else if (categoryImages[orderData.category]) {
+                productImageElement.src = categoryImages[orderData.category];
+                productImageElement.alt = orderData.category;
+            } else {
+                productImageElement.src = 'https://via.placeholder.com/80/f5f5f7/86868b?text=Ürün';
+            }
+            
+            // City change handler
+            document.getElementById('city').addEventListener('change', (e) => {
+                updateDistricts(e.target.value);
+            });
+            
+            // Phone number formatting
+            document.getElementById('phone').addEventListener('input', (e) => {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length > 0) {
+                    if (value.length <= 3) {
+                        value = value;
+                    } else if (value.length <= 6) {
+                        value = value.slice(0, 3) + ' ' + value.slice(3);
+                    } else if (value.length <= 8) {
+                        value = value.slice(0, 3) + ' ' + value.slice(3, 6) + ' ' + value.slice(6);
+                    } else {
+                        value = value.slice(0, 3) + ' ' + value.slice(3, 6) + ' ' + value.slice(6, 8) + ' ' + value.slice(8, 10);
+                    }
+                }
+                e.target.value = value;
+            });
+        });
+        
+        // Update districts based on city
+        function updateDistricts(city) {
+            const districtSelect = document.getElementById('district');
+            districtSelect.innerHTML = '<option value="">Seçiniz</option>';
+            
+            if (districts[city]) {
+                districts[city].forEach(district => {
+                    const option = document.createElement('option');
+                    option.value = district;
+                    option.textContent = district;
+                    districtSelect.appendChild(option);
+                });
+            }
+        }
+        
+        // Step Navigation
+        function goToStep(step) {
+            if (step < currentStep || validateStep(step - 1)) {
+                currentStep = step;
+                updateStepDisplay();
+            }
+        }
+        
+        function nextStep() {
+            if (validateCurrentStep()) {
+                if (currentStep === totalSteps) {
+                    submitOrder();
+                } else {
+                    currentStep++;
+                    updateStepDisplay();
+                }
+            }
+        }
+        
+        function previousStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateStepDisplay();
+            }
+        }
+        
+        function updateStepDisplay() {
+            // Hide all steps
+            document.querySelectorAll('.form-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show current step
+            document.getElementById(`step${currentStep}`).classList.add('active');
+            
+            // Update progress
+            const progressPercentage = ((currentStep - 1) / (totalSteps - 1)) * 100;
+            document.getElementById('progressLine').style.width = `${progressPercentage}%`;
+            
+            // Update step indicators
+            document.querySelectorAll('.step').forEach((step, index) => {
+                step.classList.remove('active', 'completed');
+                if (index + 1 < currentStep) {
+                    step.classList.add('completed');
+                } else if (index + 1 === currentStep) {
+                    step.classList.add('active');
+                }
+            });
+            
+            // Update buttons
+            document.getElementById('prevButton').style.display = currentStep > 1 ? 'block' : 'none';
+            document.getElementById('nextButton').textContent = currentStep === totalSteps ? 'Siparişi Onayla' : 'Devam Et';
+            
+            // Update review if on step 3
+            if (currentStep === 3) {
+                updateReview();
+            }
+        }
+        
+        function updateReview() {
+            document.getElementById('reviewName').textContent = 
+                `${document.getElementById('firstName').value} ${document.getElementById('lastName').value}`;
+            document.getElementById('reviewPhone').textContent = 
+                `Tel: ${document.getElementById('phone').value}`;
+            document.getElementById('reviewEmail').textContent = 
+                `Email: ${document.getElementById('email').value}`;
+            document.getElementById('reviewAddress').textContent = 
+                `${document.getElementById('address').value}, ${document.getElementById('district').value}/${document.getElementById('city').value}`;
+        }
+        
+        // Validation
+        function validateStep(step) {
+            if (step === 0) return true;
+            
+            let isValid = true;
+            
+            if (step === 1) {
+                const fields = ['firstName', 'lastName', 'email', 'phone'];
+                fields.forEach(fieldId => {
+                    const field = document.getElementById(fieldId);
+                    const value = field.value.trim();
+                    
+                    if (!value) {
+                        showError(field);
+                        isValid = false;
+                    } else if (fieldId === 'email' && !isValidEmail(value)) {
+                        showError(field);
+                        isValid = false;
+                    } else if (fieldId === 'phone' && !isValidPhone(value)) {
+                        showError(field);
+                        isValid = false;
+                    } else {
+                        hideError(field);
+                    }
+                });
+            } else if (step === 2) {
+                const fields = ['address', 'city', 'district'];
+                fields.forEach(fieldId => {
+                    const field = document.getElementById(fieldId);
+                    if (!field.value) {
+                        showError(field);
+                        isValid = false;
+                    } else {
+                        hideError(field);
+                    }
+                });
+            }
+            
+            return isValid;
+        }
+        
+        function validateCurrentStep() {
+            if (currentStep === 3) {
+                if (!document.getElementById('terms').checked) {
+                    alert('Lütfen satış sözleşmesini kabul ediniz.');
+                    return false;
+                }
+                return true;
+            }
+            return validateStep(currentStep);
+        }
+        
+        function showError(field) {
+            field.classList.add('input-error');
+            field.parentElement.querySelector('.error-message').style.display = 'block';
+        }
+        
+        function hideError(field) {
+            field.classList.remove('input-error');
+            field.parentElement.querySelector('.error-message').style.display = 'none';
+        }
+        
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+        
+        function isValidPhone(phone) {
+            return phone.replace(/\D/g, '').length >= 10;
+        }
+        
+        // Submit Order
+        async function submitOrder() {
+            // Show loading
+            document.getElementById('loadingOverlay').classList.add('active');
+            
+            // Collect order data
+            orderData.orderNumber = `GP${new Date().getFullYear()}${Date.now().toString().slice(-6)}`;
+            orderData.firstName = document.getElementById('firstName').value;
+            orderData.lastName = document.getElementById('lastName').value;
+            orderData.email = document.getElementById('email').value;
+            orderData.phone = document.getElementById('phone').value;
+            orderData.address = document.getElementById('address').value;
+            orderData.city = document.getElementById('city').value;
+            orderData.district = document.getElementById('district').value;
+            orderData.zipCode = document.getElementById('zipCode').value;
+            orderData.orderDate = new Date().toLocaleDateString('tr-TR');
+            orderData.deliveryDate = getDeliveryDate();
+            
+            try {
+                // Send customer email
+                await emailjs.send(
+                    'service_ydgnhkn',
+                    'template_tudnlwr',
+                    {
+                        to_email: orderData.email,
+                        customer_name: `${orderData.firstName} ${orderData.lastName}`,
+                        order_number: orderData.orderNumber,
+                        product_name: orderData.product,
+                        total_price: orderData.price,
+                        delivery_date: orderData.deliveryDate,
+                        order_date: orderData.orderDate,
+                        customer_email: orderData.email
+                    }
+                );
+                
+                // Send admin email
+                await emailjs.send(
+                    'service_ydgnhkn',
+                    'template_skjs2ap',
+                    {
+                        order_number: orderData.orderNumber,
+                        customer_name: `${orderData.firstName} ${orderData.lastName}`,
+                        customer_phone: orderData.phone,
+                        customer_email: orderData.email,
+                        product_name: orderData.product,
+                        product_price: orderData.price,
+                        address: orderData.address,
+                        city: orderData.city,
+                        district: orderData.district,
+                        order_date: orderData.orderDate
+                    }
+                );
+                
+                // Direkt order-confirmation sayfasına yönlendir
+                const confirmationParams = new URLSearchParams({
+                    order: orderData.orderNumber,
+                    product: orderData.product,
+                    price: orderData.price,
+                    name: `${orderData.firstName} ${orderData.lastName}`,
+                    phone: orderData.phone,
+                    email: orderData.email,
+                    address: orderData.address,
+                    city: orderData.city,
+                    district: orderData.district
+                });
+                
+                window.location.href = `order-confirmation.html?${confirmationParams.toString()}`;
+                
+            } catch (error) {
+                console.error('Email gönderimi hatası:', error);
+                document.getElementById('loadingOverlay').classList.remove('active');
+                
+                if (error.text) {
+                    console.error('EmailJS Error:', error.text);
+                }
+                
+                // Hata durumunda da yönlendir
+                if (confirm('Email gönderiminde sorun oluştu ancak siparişiniz alındı. Devam etmek ister misiniz?')) {
+                    const confirmationParams = new URLSearchParams({
+                        order: orderData.orderNumber,
+                        product: orderData.product,
+                        price: orderData.price,
+                        name: `${orderData.firstName} ${orderData.lastName}`,
+                        phone: orderData.phone,
+                        email: orderData.email,
+                        address: orderData.address,
+                        city: orderData.city,
+                        district: orderData.district
+                    });
+                    
+                    window.location.href = `order-confirmation.html?${confirmationParams.toString()}`;
+                }
+            }
+        }
+        
+        function getDeliveryDate() {
+            const today = new Date();
+            const deliveryDate = new Date(today);
+            deliveryDate.setDate(deliveryDate.getDate() + 2);
+            
+            if (deliveryDate.getDay() === 0) {
+                deliveryDate.setDate(deliveryDate.getDate() + 1);
+            } else if (deliveryDate.getDay() === 6) {
+                deliveryDate.setDate(deliveryDate.getDate() + 2);
+            }
+            
+            return deliveryDate.toLocaleDateString('tr-TR');
+        }
+    </script>
+</body>
+</html>
