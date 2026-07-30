@@ -2,15 +2,15 @@ function createNavbar() {
     const navbarHTML = `
         <nav class="navbar">
             <a class="noact" href="index.html">
-                <img class="navlogo" src="https://raw.githubusercontent.com/oceandi/links/refs/heads/main/ISP/images/homepage/logo.png">
+                <img class="navlogo" src="7c.png">
             </a>
             <div class="nwa">
                 <ul class="nav-menu">
-                    <li><a href="router.html" draggable="false">Router</a></li>
-                    <li><a href="ap.html" draggable="false">AP</a></li>
-                    <li><a href="powerline.html" draggable="false">Powerline</a></li>
-                    <li><a href="mesh.html" draggable="false">Mesh</a></li>
-                    <li><a href="tel:+905321583184" draggable="false">Destek</a></li>
+                    <li><a href="router.html" draggable="false">Renklendir</a></li>
+                    <li><a href="ap.html" draggable="false">Restorasyon</a></li>
+                    <li><a href="powerline.html" draggable="false">Özel Tasarım</a></li>
+                    <li><a href="mesh.html" draggable="false">Montaj</a></li>
+                    <li><a href="tel:+905321583184" draggable="false">İletişim</a></li>
                 </ul>
             </div>
             <div class="hamburger" onclick="toggleMenu()">
