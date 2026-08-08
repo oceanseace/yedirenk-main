@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Montaj</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="https://raw.githubusercontent.com/oceandi/links/refs/heads/main/ISP/images/homepage/logo.png">
+    <link rel="stylesheet" href="product-styles.css">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="footer.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <script src="navbar.js"></script>
+    
+    <!-- Hero Section -->
+    <section class="product-hero" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+        <div class="hero-content">
+            <h1 class="product-title" style="color: white;">Montaj Hizmeti</h1>
+            <p class="product-subtitle" style="color: #f5f5f7;">Erzurum'un Montajını<br>Erzurum Yapar.</p>
+            <div class="hero-pricing">
+                <span class="price" style="color: white;">₺1.999</span>
+                <span class="price-info" style="color: #f5f5f7;">'den başlayan fiyatlarla</span>
+            </div>
+            <div class="hero-actions">
+                <a href="#buy" class="btn-primary" style="background-color: white; color: #764ba2;">Montaj Desteği</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="static/index/deco-mesh.png">
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">Başka yerden alsanızda...</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🏡</div>
+                    <h3>Biz yine gelip kurarız</h3>
+                    <p>Başvuru sonrası 24 saat içinde randevu araması sağlanır.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Geri Dönüşüm Teklifi</h3>
+                    <p>Eski ürünleriniz için fiyat teklifi yapabilirsiniz.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>Aklınıza bir soru mu takıldı?</h3>
+                    <p>Profesyonel ekiplerimiz sizi doğru şekilde yönlendirir.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Mobil Yönetim</h3>
+                    <p>iOS ve Android uygulaması ile daha fazlasını keşfedebilirsiniz.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Buy Section -->
+    <section id="buy" class="buy-section">
+        <div class="container">
+            <h2 class="section-title">Montaj Desteği Seçenekleri</h2>
+            <div class="models-grid">
+                <div class="model-card">
+                    <h3>Mobilya Montajı</h3>
+                    <p class="model-price">₺1999</p>
+                    <ul class="model-features">
+                        <li>Saatlik fiyat geçerlidir</li>
+                        <li>Nakit ve Kredi Kartı Geçerli</li>
+                        <li>Erzurum İçinde Geçerli</li>
+                        <li>Erzurum Dışında Yönlendirme Sağlanır</li>
+                    </ul>
+                    <details class="tech-specs-mini">
+                        <summary>Teknik Detaylar</summary>
+                        <div class="tech-details">
+                            <p><strong>Randevu:</strong> İletişime geçildiğinde, kurulacak ürünün görüntü/videosunu istenir.</p>
+                            <p><strong>Ekip:</strong> İhtiyaca göre ekip sayısı planlanır.</p>
+                            <p><strong>Hız:</strong> Kurulum 1 saati geçmeyecek şekilde planlanır.</p>
+                            <p><strong>Bilgilendirme</strong> Bilgilendirme sağlanır.</p>
+                        </div>
+                    </details>
+                    <button class="btn-buy" onclick="openBuyModal('Deco M4 2li Paket', 2999)">Satın Al</button>
+                </div>
+                
+                <div class="model-card featured">
+                    <div class="badge">Çok Satan</div>
+                    <h3>Mutfak Montajı</h3>
+                    <p class="model-price">₺2999</p>
+                    <ul class="model-features">
+                        <li>Saatlik fiyat geçerlidir</li>
+                        <li>Nakit ve Kredi Kartı Geçerli</li>
+                        <li>Erzurum İçinde Geçerli</li>
+                        <li>Erzurum Dışında Yönlendirme Sağlanır</li>
+                    </ul>
+                    <details class="tech-specs-mini">
+                        <summary>Teknik Detaylar</summary>
+                        <div class="tech-details">
+                            <p><strong>Randevu:</strong> İletişime geçildiğinde, kurulacak ürünün görüntü/videosunu istenir.</p>
+                            <p><strong>Ekip:</strong> İhtiyaca göre ekip sayısı planlanır.</p>
+                            <p><strong>Hız:</strong> Kurulum 1 saati geçmeyecek şekilde planlanır.</p>
+                            <p><strong>Bilgilendirme</strong> Bilgilendirme sağlanır.</p>
+                        </div>
+                    </details>
+                    <button class="btn-buy" onclick="openBuyModal('Deco PX50 2li Paket', 5999)">Satın Al</button>
+                </div>
+                
+                <div class="model-card">
+                    <h3>Sistem Montajı</h3>
+                    <p class="model-price">₺5.999</p>
+                    <ul class="model-features">
+                        <li>Kamera Kurulumu</li>
+                        <li>Bilgisayar Desteği</li>
+                        <li>Ağ Desteği</li>
+                        <li>Spor Ürünleri Desteği</li>
+                    </ul>
+                    <details class="tech-specs-mini">
+                        <summary>Teknik Detaylar</summary>
+                        <div class="tech-details">
+                            <p><strong>Randevu:</strong> İletişime geçildiğinde, kurulacak ürünün görüntü/videosunu istenir.</p>
+                            <p><strong>Ekip:</strong> İhtiyaca göre ekip sayısı planlanır.</p>
+                            <p><strong>Hız:</strong> Kurulum 1 saati geçmeyecek şekilde planlanır.</p>
+                            <p><strong>Bilgilendirme</strong> Bilgilendirme sağlanır.</p>
+                        </div>
+                    </details>
+                    <button class="btn-buy" onclick="openBuyModal('Deco X60 2li Paket', 7999)">Satın Al</button>
+                </div>
+            </div>
+            
+            <div class="expansion-note">
+                <p><strong>Not:</strong> Eruzum ili sınırları içerisinde kurulum tarafımızdan yapılır.</p>
+            </div>
+        </div>
+    </section>
+    <script src="footer.js"></script>
+    <script src="product-scripts.js"></script>
+</body>
+</html>

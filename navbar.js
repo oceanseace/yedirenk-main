@@ -6,10 +6,10 @@ function createNavbar() {
             </a>
             <div class="nwa">
                 <ul class="nav-menu">
-                    <li><a href="router.html" draggable="false">Renklendir</a></li>
-                    <li><a href="ap.html" draggable="false">Restorasyon</a></li>
-                    <li><a href="powerline.html" draggable="false">Özel Tasarım</a></li>
-                    <li><a href="mesh.html" draggable="false">Montaj</a></li>
+                    <li><a href="color.html" draggable="false">Renklendir</a></li>
+                    <li><a href="restore.html" draggable="false">Restorasyon</a></li>
+                    <li><a href="build.html" draggable="false">Özel Tasarım</a></li>
+                    <li><a href="install.html" draggable="false">Montaj</a></li>
                     <li><a href="tel:+905321583184" draggable="false">İletişim</a></li>
                 </ul>
             </div>

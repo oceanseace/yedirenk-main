@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Özel Tasarım</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="7c.png">
+    <link rel="stylesheet" href="product-styles.css">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="footer.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <script src="navbar.js"></script>
+    
+    <!-- Hero Section -->
+    <section class="product-hero">
+        <div class="hero-content">
+            <h1 class="product-title">Özel Tasarım</h1>
+            <p class="product-subtitle">Siz çizin, biz üretelim.<br>Her detayda imzanız var.</p>
+            <div class="hero-pricing">
+                <span class="price">₺2.999</span>
+                <span class="price-info">'den başlayan fiyatlarla</span>
+            </div>
+            <div class="hero-actions">
+                <a href="#buy" class="btn-primary">İnşa Et</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="static/index/2004px.png" alt="Powerline Kit">
+        </div>
+    </section>
+    <!-- How It Works Section -->
+    <section class="design-section">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 60px;">Nasıl Çalışır?</h2>
+            <div class="how-it-works">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Modeli 3D ortamda çizin</h3>
+                    <p>AutoCAD, SketchUp gibi araçları kullanarak mimariyi tasarlayın</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>3D Formattaki dosyanızı bize iletin</h3>
+                    <p>Ekiplerimiz takıldığınız yer olursa size yardımcı olacaktır.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Stres Testi Uygulayalım</h3>
+                    <p>Simüle ortamda ağırlık, basınç noktaları stres testinde güvenle test edilir</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Kullanmaya Başlayın</h3>
+                    <p>Mobilyanız artık bir eşyadan daha fazlasını hisettirir</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Buy Section -->
+    <section id="buy" class="buy-section">
+        <div class="container">
+            <h2 class="section-title">İçinizi Ferahlatan Fiyatlar</h2>
+            <div class="models-grid">
+                <div class="model-card">
+                    <h3>Sandalye</h3>
+                    <p class="model-price">₺1999</p>
+                    <ul class="model-features">
+                        <li>Tek Kişilik Sandalyeler</li>
+                        <li>Tek Kişilik Tabureler</li>
+                        <li>Tek Kişilik Sallanan Koltuklar</li>
+                        <li>Tek Kişilik Berjerler</li>
+                    </ul>
+                    <details class="tech-specs-mini">
+                        <summary>Teknik Detaylar</summary>
+                        <div class="tech-details">
+                            <p><strong>Sandalye vb.:</strong> Başlangıç fiyatına tabidir.</p>
+                            <p><strong>Koltuk:</strong> Fiyatlar çizim sonrası verilen fiyat onayı sonrası üretilir.</p>
+                        </div>
+                    </details>
+                    <button class="btn-buy" onclick="openBuyModal('TL-WPA4226 KIT', 2999)">Satın Al</button>
+                </div>
+                
+                <div class="model-card featured">
+                    <div class="badge">Tavsiye Edilen</div>
+                    <h3>Masa</h3>
+                    <p class="model-price">₺4999</p>
+                    <ul class="model-features">
+                        <li>Çalışma Masaları</li>
+                        <li>Yemek Masaları</li>
+                        <li>Balkon Masaları</li>
+                        <li>Mutfak Masaları</li>
+                    </ul>
+                    <details class="tech-specs-mini">
+                        <summary>Teknik Detaylar</summary>
+                        <div class="tech-details">
+                            <p><strong>Levha Malzemeleri:</strong> Masif, MDF, Sunta gibi ahşap levhalar seçilebilir.</p>
+                            <p><strong>Ayaklar:</strong> Yükseltiebilir ve sabit seçimler yapılabilir.</p>
+                            <p><strong>Extra:</strong> Metal, cam, plastik ve merer, kuvars gibi seçimler yapılabilir</p>
+                        </div>
+                    </details>
+                    <button class="btn-buy" onclick="openBuyModal('TL-WPA7617 KIT', 3499)">Satın Al</button>
+                </div>
+                
+                <div class="model-card">
+                    <h3>Dolap</h3>
+                    <p class="model-price">₺19999</p>
+                    <ul class="model-features">
+                        <li>Gardıroplar</li>
+                        <li>Depolama Sistemleri</li>
+                        <li>Banyo Dolapları</li>
+                        <li>Mutfak Dolapları</li>
+                    </ul>
+                    <details class="tech-specs-mini">
+                        <summary>Teknik Detaylar</summary>
+                        <div class="tech-details">
+                            <p><strong>Malzeme:</strong> Suntalam, MDFlam ve daha fazlası seçilebilir.</p>
+                            <p><strong>Kapak:</strong> Lake, Akrilik, Membran (Balon), High Gloss, Melamin (MDFlam) ve daha fazlası yapılabilir.</p>
+                        </div>
+                    </details>
+                    <button class="btn-buy" onclick="openBuyModal('TL-WPA8631P KIT', 4999)">Satın Al</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="footer.js"></script>
+    <script src="product-scripts.js"></script>
+</body>
+</html>
